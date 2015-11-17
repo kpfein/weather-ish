@@ -1,0 +1,8 @@
+.alert-title {
+}
+
+.alert-description {
+	color: red;
+	font-style: italic;
+	font-size: 0.75em;
+}

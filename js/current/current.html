@@ -1,0 +1,12 @@
+<a ui-sref="forecast"> 7 Day Forecast </a>
+<div class="current-container">
+<h1>{{city}}</h1>
+
+</div>
+<p>{{weather.currently.summary}}</p>
+<p>Temp: {{temp(weather.currently.temperature)}}</p>
+<p>Dew Point: {{weather.currently.dewPoint}}</p>
+<p>Humidity: {{weather.currently.humidity}}</p>
+<p>Chance of Precipitation: {{weather.currently.precipProbability}}%</p>
+<p>Wind: {{weather.currently.windBearing}}</p>
+<p>{{weather.currently.windSpeed}}</p>

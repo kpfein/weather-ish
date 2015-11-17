@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>Weatherish</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body ng-app="weatherish">
+
+	<div class="navbar">
+        <ul>
+            <a ui-sref="home"> Home </a>
+           <!--  <a ui-sref="current"> Current Weather </a>
+            <a ui-sref="forecast"> Forecast </a> -->
+        </ul>
+    </div>	
+
+
+
+<ui-view></ui-view>
+
+	<script src="https://code.angularjs.org/1.4.7/angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/current/currentCtrl.js"></script>
+	<script src="js/forecast/forecastCtrl.js"></script>
+	<script src="js/home/homeCtrl.js"></script>
+	<script src="js/weatherService.js"></script>
+	<script src="js/cityService.js"></script>
+</body>
+</html>
