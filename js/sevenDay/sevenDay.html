@@ -1,17 +1,21 @@
-<button ui-sref="forecast.current"> Current Weather </button>
-<button ui-sref="forecast.hourly"> 48 Hour Forecast </button>
-
+<routes-directive></routes-directive>
+<h1>7 Day Forecast</h1>
 
 <div class="forecast-container">
-<h1>{{city}}</h1>
+<h2>{{city}}</h2>
+<alerts-directive></alerts-directive>
+
 	
 </div>
 	<div class="seven-day-container">
-		<div class="seven-day-day "ng-repeat="day in weather.daily.data" ng-click="showDaily = !showDaily">
-			<div>{{convertDate(day.time) | date: "EEEE M/d"}}</div><div>{{day.summary}}</div>
+<button ng-click="toggleUnits = !toggleUnits">°F / °C</button>
+
+		<div ng-repeat="weather in weather.daily.data" ng-click="showDaily = !showDaily">
+			<div>{{convertDate(weather.time) | date: "EEEE M/d"}}</div><div>{{weather.summary}}</div>
+			<div>Hi: {{round(weather.temperatureMax)}}°F</div>
+			<div>Lo: {{round(weather.temperatureMin)}}°F</div>
 				<div ng-show="showDaily">
-				<div>Hi: {{round(day.temperatureMax)}}°</div>
-				<div>Lo: {{round(day.temperatureMin)}}°</div>
+				
 				</div>
 		</div>
 	</div>

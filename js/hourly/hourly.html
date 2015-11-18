@@ -1,21 +1,25 @@
-<button ui-sref="forecast.current"> Current Weather </button>
-<button ui-sref="forecast.sevenDay"> 7 Day Forecast </button>
+<routes-directive></routes-directive>
 
+<h1>Hourly Forecast</h1>
 
-<h1>{{city}}</h1>
+<h2>{{city}}</h2>
+<alerts-directive></alerts-directive>
+<button ng-click="toggleUnits = !toggleUnits">°F / °C</button>
+
 <div>Summary: {{weather.hourly.summary}}</div>
-<div ng-repeat="day in weather.hourly.data" ng-click="showHourly = !showHourly">
-	<div>{{convertDate(day.time) | date: "h a"}}</div>
-	<div>{{day.summary}}</div>
-	<div>{{round(day.temperature)}}°</div>
-	<div>{{day.precipProbability}}%</div>
-	<div>{{day.precipType}}</div>
+
+<div ng-repeat="weather in weather.hourly.data" ng-click="showHourly = !showHourly">
+	<div>{{convertDate(weather.time) | date: "h a"}}</div>
+	<div>{{weather.summary}}</div>
+	<div>{{round(weather.temperature)}}°</div>
+	<div>{{weather.precipProbability}}%</div>
+	<div>{{weather.precipType}}</div>
 	<div ng-show="showHourly">
 		<div>{{direction(weather.currently.windBearing)}}</div>
-		<div>{{round(day.windSpeed)}} mph</div>
-		<div>{{day.dewPoint}}</div>
-		<div>{{day.humidity}}</div>
-		<div>{{day.visibility}</div>
+		<div>{{round(weather.windSpeed)}} mph</div>
+		<div>{{weather.dewPoint}}</div>
+		<div>{{weather.humidity}}</div>
+		<div>{{weather.visibility}</div>
 		
 	</div>
 	<hr>	

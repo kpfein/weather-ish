@@ -1,22 +1,38 @@
-<button ui-sref="forecast.sevenDay"> 7 Day Forecast </button>
-<button ui-sref="forecast.hourly"> 48 Hour Forecast </button>
+<routes-directive></routes-directive>
+<h1>Current Weather</h1>
 
 <div class="current-container">
-<h1>{{city}}</h1>
-
-	<div ng-if="weather.alerts">
-		<button ng-click="showAlert = !showAlert" >Alerts</button>
-		<div ng-show="showAlert" ng-repeat="alert in weather.alerts">
-			<h3>{{alert.title}}</h3>
-			<p>{{alert.description}}</p>
-			<hr>
-		</div>
-	</div>
+<h2>{{city}}</h2>
+<alerts-directive></alerts-directive>
+	
 </div>
-<div>{{weather.currently.summary}}</div>
-<div>Temp: {{round(weather.currently.temperature)}}°</div>
-<div>Dew Point: {{round(weather.currently.dewPoint)}}°</div>
-<div>Humidity: {{humidity(weather.currently.humidity)}}%</div>
-<div>Chance of Precipitation: {{weather.currently.precipProbability}}%</div>
-<div>Wind: {{direction(weather.currently.windBearing)}}</div>
-<div>{{round(weather.currently.windSpeed)}} mph</div>
+<button ng-click="toggleUnits = !toggleUnits">°F / °C</button>
+<div ng-show="!toggleUnits">
+	<div>{{weather.currently.summary}}</div>
+	<div>Current: {{round(weather.currently.temperature)}}°F</div>
+	<div>Feels Like: {{round(weather.currently.apparentTemperature)}}°F</div>
+	<div>Hi: {{round(weather.daily.data[0].temperatureMax)}}°F</div>
+	<div>Lo: {{round(weather.daily.data[0].temperatureMin)}}°F</div>
+	<div>Dew Point: {{round(weather.currently.dewPoint)}}°</div>
+	<div>Humidity: {{percentage(weather.currently.humidity)}}%</div>
+	<div>Precipitation: {{percentage(weather.currently.precipProbability)}}%</div>
+	<div>Wind: {{round(weather.currently.windSpeed)}} mph {{direction(weather.currently.windBearing)}}</div>
+	<div>Visibility: {{weather.currently.visibility}} mi</div>
+	<div>Sunrise: {{convertDate(weather.daily.data[0].sunriseTime) | date: "shortTime"}}</div>
+	<div>Sunset: {{convertDate(weather.daily.data[0].sunsetTime) | date: "shortTime"}}</div>
+</div>
+
+<div ng-show="toggleUnits">
+	<div>{{weather.currently.summary}}</div>
+	<div>Current: {{celsius(weather.currently.temperature)}}°C</div>
+	<div>Feels Like: {{round(weather.currently.apparentTemperature)}}°C</div>
+	<div>Hi: {{celsius(weather.daily.data[0].temperatureMax)}}°C</div>
+	<div>Lo: {{celsius(weather.daily.data[0].temperatureMin)}}°C</div>
+	<div>Dew Point: {{celsius(weather.currently.dewPoint)}}°</div>
+	<div>Humidity: {{percentage(weather.currently.humidity)}}%</div>
+	<div>Precipitation: {{percentage(weather.currently.precipProbability)}}%</div>
+	<div>Wind: {{kph(weather.currently.windSpeed)}} kph | {{direction(weather.currently.windBearing)}}</div>
+	<div>Visibility: {{kilo(weather.currently.visibility)}} km</div>
+</div>
+
+

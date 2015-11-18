@@ -20,10 +20,22 @@ angular.module("weatherish").controller("homeCtrl", function($scope, weatherServ
 		return Math.round(x);
 	}
 
-	$scope.humidity = function(x){
+	$scope.celsius = function(a){
+		return Math.round((a - 32) * (5/9));
+	}
+
+	$scope.percentage = function(x){
 		return Math.round(x * 100);
 	}
-	
+
+	$scope.kilo = function(z){
+		return (z * 1.69034).toFixed(2);
+	}
+
+	$scope.kph = function(f){
+		return Math.round(f * 1.69034);
+	}
+
 	$scope.direction = function(y){
 		var x;
 		if(((y >= 348.75) && (y < 360)) || ((y <= 11.24) && (y > 0))){ 

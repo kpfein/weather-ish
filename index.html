@@ -4,12 +4,17 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 </head>
-<body ng-app="weatherish">
+<body ng-app="weatherish" ng-controller="homeCtrl">
 
 	<div class="navbar">
-        <div id="home-button"><button ui-sref="forecast"> Home </button></div>
+        <button ui-sref="forecast"> Home </button>
         <div show-time></div>
+        <form>
+		<input placeholder="Enter city..." ng-model="cityInput">
+		<input type="submit" value="Search" ui-sref="forecast.current" ng-click="getWeather(cityInput)">
+	</form>
     </div>	
+
 
 
 
@@ -26,7 +31,10 @@
 	<script src="js/home/homeCtrl.js"></script>
 	<script src="js/hourly/hourlyCtrl.js"></script>
 	<script src="js/weatherService.js"></script>
-	<script src="js/timeDirective.js"></script>
+	<script src="js/directives/timeDirective.js"></script>
+	<script src="js/directives/alertsDirective.js"></script>
+	<script src="js/directives/routesDirective.js"></script>
+
 
 </body>
 </html>
