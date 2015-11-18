@@ -2,26 +2,39 @@ angular.module("weatherish", ["ui.router"])
 
 	.config(function($urlRouterProvider, $stateProvider){
 
+
+		$urlRouterProvider.otherwise("/forecast");
+
 		
 		$stateProvider
-			.state("home", {
-				url: "/",
+			.state("forecast", {
+				url: "/forecast",
 				controller: "homeCtrl",
 				templateUrl: "js/home/home.html",
 			})
-			.state("current", {
+			.state("forecast.current", {
 				url: "/current",
 				controller: "currentCtrl",
 				templateUrl: "js/current/current.html",
 			})
-			.state("forecast", {
-				url: "/forecast",
-				controller: "forecastCtrl",
-				templateUrl: "js/forecast/forecast.html",
+			.state("forecast.sevenDay", {
+				url: "/sevenDay",
+				controller: "sevenDayCtrl",
+				templateUrl: "js/sevenDay/sevenDay.html",
 			})
-			
+			.state("forecast.hourly", {
+				url: "/hourly",
+				controller: "hourlyCtrl",
+				templateUrl: "js/hourly/hourly.html",
+			})
 
 
-		$urlRouterProvider.otherwise("/home");
+
 
 });
+
+
+
+
+
+

@@ -1,10 +1,9 @@
-angular.module("weatherish").service("weatherService", function($http, $q, cityService){
+angular.module("weatherish").service("weatherService", function($http, $q){
 
 
 	var openKey= "eafb47ac95ef929b614855a7339d9570";
 	var forecastIOKey = "a33e7199c2f8943cc7ab2aae33da2669"; 
 
-	// city = cityService.city;
 
 	this.getCity = function(city){
 		var deferred = $q.defer();

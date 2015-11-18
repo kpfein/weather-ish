@@ -1,0 +1,17 @@
+<button ui-sref="forecast.current"> Current Weather </button>
+<button ui-sref="forecast.hourly"> 48 Hour Forecast </button>
+
+
+<div class="forecast-container">
+<h1>{{city}}</h1>
+	
+</div>
+	<div class="seven-day-container">
+		<div class="seven-day-day "ng-repeat="day in weather.daily.data" ng-click="showDaily = !showDaily">
+			<div>{{convertDate(day.time) | date: "EEEE M/d"}}</div><div>{{day.summary}}</div>
+				<div ng-show="showDaily">
+				<div>Hi: {{round(day.temperatureMax)}}°</div>
+				<div>Lo: {{round(day.temperatureMin)}}°</div>
+				</div>
+		</div>
+	</div>

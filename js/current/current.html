@@ -1,12 +1,22 @@
-<a ui-sref="forecast"> 7 Day Forecast </a>
+<button ui-sref="forecast.sevenDay"> 7 Day Forecast </button>
+<button ui-sref="forecast.hourly"> 48 Hour Forecast </button>
+
 <div class="current-container">
 <h1>{{city}}</h1>
 
+	<div ng-if="weather.alerts">
+		<button ng-click="showAlert = !showAlert" >Alerts</button>
+		<div ng-show="showAlert" ng-repeat="alert in weather.alerts">
+			<h3>{{alert.title}}</h3>
+			<p>{{alert.description}}</p>
+			<hr>
+		</div>
+	</div>
 </div>
-<p>{{weather.currently.summary}}</p>
-<p>Temp: {{temp(weather.currently.temperature)}}</p>
-<p>Dew Point: {{weather.currently.dewPoint}}</p>
-<p>Humidity: {{weather.currently.humidity}}</p>
-<p>Chance of Precipitation: {{weather.currently.precipProbability}}%</p>
-<p>Wind: {{weather.currently.windBearing}}</p>
-<p>{{weather.currently.windSpeed}}</p>
+<div>{{weather.currently.summary}}</div>
+<div>Temp: {{round(weather.currently.temperature)}}°</div>
+<div>Dew Point: {{round(weather.currently.dewPoint)}}°</div>
+<div>Humidity: {{humidity(weather.currently.humidity)}}%</div>
+<div>Chance of Precipitation: {{weather.currently.precipProbability}}%</div>
+<div>Wind: {{direction(weather.currently.windBearing)}}</div>
+<div>{{round(weather.currently.windSpeed)}} mph</div>
