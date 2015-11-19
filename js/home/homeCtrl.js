@@ -10,6 +10,7 @@ angular.module("weatherish").controller("homeCtrl", function($scope, weatherServ
 
 	$scope.forecast = "Current Weather";
 
+
 	$scope.temp = function(temp){
 		return Math.round(temp);
 	}

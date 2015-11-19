@@ -1,4 +1,4 @@
-angular.module("weatherish", ["ui.router", "ui.bootstrap"])
+angular.module("weatherish", ["ui.router", "ui.bootstrap", "angular-skycons"])
 
 	.config(function($urlRouterProvider, $stateProvider){
 
