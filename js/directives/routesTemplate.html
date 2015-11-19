@@ -1,3 +1,15 @@
-<button ui-sref="forecast.current"> Current Weather </button>
-<button ui-sref="forecast.sevenDay"> 7 Day Forecast </button>
-<button ui-sref="forecast.hourly"> Hourly Forecast </button>
+<div class="text-center" ng-show="w">	
+	<div class="btn-group">
+	    <label class="btn btn-primary btn-lg" ui-sref="forecast"> Home </label>
+		<label class="btn btn-primary btn-lg" ng-model="forecast" uib-btn-radio="'Current Weather'" ui-sref="forecast.current">Current Weather</label>
+		<label class="btn btn-primary btn-lg" ng-model="forecast" uib-btn-radio="'7 Day Forecast'" ui-sref="forecast.sevenDay">7 Day Forecast</label>
+		<label class="btn btn-primary btn-lg" ng-model="forecast" uib-btn-radio="'Hourly Forecast'" ui-sref="forecast.hourly">Hourly Forecast</label>
+		<label class="btn btn-primary btn-lg" ng-click="toggleUnits = !toggleUnits">°F / °C</label>
+		<button ng-show="w.alerts" class="btn btn-danger btn-lg" ng-click="showAlert = !showAlert" >!</button>
+	</div>
+	<div id="source">
+		<h6>Weather data courtesy of Dark Sky Company, LLC</h6>
+	</div>
+	<alerts-directive class="alerts"></alerts-directive>
+<hr>
+</div>

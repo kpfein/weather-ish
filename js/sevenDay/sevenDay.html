@@ -1,21 +1,45 @@
-<routes-directive></routes-directive>
-<h1>7 Day Forecast</h1>
-
 <div class="forecast-container">
-<h2>{{city}}</h2>
-<alerts-directive></alerts-directive>
+	<div class="city">
+		<h1>{{city}}</h1>
+	</div>
 
-	
-</div>
 	<div class="seven-day-container">
-<button ng-click="toggleUnits = !toggleUnits">°F / °C</button>
 
-		<div ng-repeat="weather in weather.daily.data" ng-click="showDaily = !showDaily">
-			<div>{{convertDate(weather.time) | date: "EEEE M/d"}}</div><div>{{weather.summary}}</div>
-			<div>Hi: {{round(weather.temperatureMax)}}°F</div>
-			<div>Lo: {{round(weather.temperatureMin)}}°F</div>
-				<div ng-show="showDaily">
+
+		<div class="seven-day-contain">
+			<div class="well well-sm" ng-show="!toggleUnits" ng-repeat="w in w.daily.data" ng-click="isCollapsed = !isCollapsed">
+				<div class="day-date">{{convertDate(w.time) | date: "EEEE"}}</div>
+				<hr>
+				<div class="day-hi-lo">Hi: {{round(w.temperatureMax)}}°F | Lo: {{round(w.temperatureMin)}}°F</div>
+				<div class="day-precip">Precip: {{percentage(w.precipProbability)}}%</div>
 				
-				</div>
+					<div uib-collapse="!isCollapsed">
+						<div>{{w.summary}}</div>
+						<div>Wind: {{round(w.windSpeed)}} mph | {{direction(w.windBearing)}}</div>
+						<div>Humidity: {{percentage(w.humidity)}}%</div>
+						<div>Dew Point: {{round(w.dewPoint)}}°</div>
+						<div>Sunrise: {{convertDate(w.sunriseTime) | date: "shortTime"}}</div>
+						<div>Sunset: {{convertDate(w.sunsetTime) | date: "shortTime"}}</div>
+					</div>
+			</div>
+
+			<div class="well well-sm" ng-show="toggleUnits" ng-repeat="w in w.daily.data" ng-click="isCollapsed = !isCollapsed">
+				<div class="day-date">{{convertDate(w.time) | date: "EEEE"}}</div>
+				<div class="day-hi-lo">Hi: {{celsius(w.temperatureMax)}}°C | Lo: {{celsius(w.temperatureMin)}}°C</div>
+				<div class="day-precip">Precip: {{percentage(w.precipProbability)}}%</div>
+
+					<div uib-collapse="!isCollapsed">
+						<div>{{w.summary}}</div>
+						<div>Wind: {{kph(w.windSpeed)}} kph | {{direction(w.windBearing)}}</div>
+						<div>Humidity: {{percentage(w.humidity)}}%</div>
+						<div>Dew Point: {{round(w.dewPoint)}}°</div>
+						<div>Sunrise: {{convertDate(w.sunriseTime) | date: "shortTime"}}</div>
+						<div>Sunset: {{convertDate(w.sunsetTime) | date: "shortTime"}}</div>
+					</div>
+			</div>
 		</div>
 	</div>
+
+</div>
+
+

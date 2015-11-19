@@ -1,7 +1,20 @@
 <div class="home-containter">
-	
+	<div class="navbar">
+	    <form>
+			<input ng-hide="true" class="btn btn-primary city-search" type="submit" value="Search" ui-sref="forecast.current" ng-click="getWeather(cityInput)">
+			<input class="city-input" placeholder="Enter city..." ng-model="cityInput">
+		</form>
+	</div>	
+
+	<hr>
+	<div show-time id="nav-time"></div>
+	<br>
+
+	<routes-directive></routes-directive>
+	<ui-view></ui-view>
 </div>
 
 
-<ui-view></ui-view>
+
+
 	

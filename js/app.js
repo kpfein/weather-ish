@@ -1,4 +1,4 @@
-angular.module("weatherish", ["ui.router"])
+angular.module("weatherish", ["ui.router", "ui.bootstrap"])
 
 	.config(function($urlRouterProvider, $stateProvider){
 

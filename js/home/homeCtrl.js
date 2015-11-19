@@ -4,9 +4,11 @@ angular.module("weatherish").controller("homeCtrl", function($scope, weatherServ
 		$scope.city = $scope.cityInput.toUpperCase();
 		weatherService.getCity($scope.cityInput).then(function(data){
 			$scope.cityInput = "";
-			$scope.weather = data;
+			$scope.w = data;
 		});
 	};
+
+	$scope.forecast = "Current Weather";
 
 	$scope.temp = function(temp){
 		return Math.round(temp);

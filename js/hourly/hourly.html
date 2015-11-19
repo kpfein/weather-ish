@@ -1,26 +1,44 @@
-<routes-directive></routes-directive>
-
-<h1>Hourly Forecast</h1>
-
-<h2>{{city}}</h2>
-<alerts-directive></alerts-directive>
-<button ng-click="toggleUnits = !toggleUnits">°F / °C</button>
-
-<div>Summary: {{weather.hourly.summary}}</div>
-
-<div ng-repeat="weather in weather.hourly.data" ng-click="showHourly = !showHourly">
-	<div>{{convertDate(weather.time) | date: "h a"}}</div>
-	<div>{{weather.summary}}</div>
-	<div>{{round(weather.temperature)}}°</div>
-	<div>{{weather.precipProbability}}%</div>
-	<div>{{weather.precipType}}</div>
-	<div ng-show="showHourly">
-		<div>{{direction(weather.currently.windBearing)}}</div>
-		<div>{{round(weather.windSpeed)}} mph</div>
-		<div>{{weather.dewPoint}}</div>
-		<div>{{weather.humidity}}</div>
-		<div>{{weather.visibility}</div>
-		
+<div class="hourly-container">
+	<div class="city">
+		<h1>{{city}}</h1>
 	</div>
-	<hr>	
+
+	<div>
+		<div id="summary">{{w.hourly.summary}}</div>
+		<hr>
+		<div id="hourly-columns">
+	<!-- time -->
+			<div class="time">TIME
+				<div ng-repeat="w in w.hourly.data">
+					<div class="time">{{convertDate(w.time) | date: "h a"}}</div>
+				</div>
+			</div>
+	<!-- cond -->
+			<div class="cond">COND
+				<div ng-repeat="w in w.hourly.data">
+					<div class="cond">{{w.summary}}</div>
+				</div>
+			</div>
+	<!-- temp -->
+			<div class="temp">TEMP
+				<div ng-show="!toggleUnits" ng-repeat="w in w.hourly.data">
+					<div class="temp">{{round(w.temperature)}}°F</div>
+				</div>
+
+				<div ng-show="toggleUnits" ng-repeat="w in w.hourly.data">
+					<div class="temp">{{celsius(w.temperature)}}°C</div>
+				</div>
+			</div>
+	<!-- precip -->
+			<div class="precip">PRECIP
+				<div ng-repeat="w in w.hourly.data">
+					<div class="precip">{{percentage(w.precipProbability)}}%</div>
+				</div>
+			</div>
+		</div>		
+	</div>	
 </div>
+
+
+
+

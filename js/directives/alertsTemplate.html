@@ -1,8 +1,4 @@
-<div ng-if="weather.alerts">
-	<button ng-click="showAlert = !showAlert" >Alerts</button>
-	<div ng-show="showAlert" ng-repeat="alert in weather.alerts">
-		<h3>{{alert.title}}</h3>
-		<p>{{alert.description}}</p>
-		<hr>
+	<div ng-show="showAlert" ng-repeat="alert in w.alerts">
+		<label class="btn btn-danger" ng-click="isCollapsed = !isCollapsed">{{alert.title}}</label>
+		<div class="well well-lg" uib-collapse="!isCollapsed">{{alert.description}}</div>
 	</div>
-</div>

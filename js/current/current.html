@@ -1,38 +1,35 @@
-<routes-directive></routes-directive>
-<h1>Current Weather</h1>
-
 <div class="current-container">
-<h2>{{city}}</h2>
-<alerts-directive></alerts-directive>
-	
-</div>
-<button ng-click="toggleUnits = !toggleUnits">°F / °C</button>
-<div ng-show="!toggleUnits">
-	<div>{{weather.currently.summary}}</div>
-	<div>Current: {{round(weather.currently.temperature)}}°F</div>
-	<div>Feels Like: {{round(weather.currently.apparentTemperature)}}°F</div>
-	<div>Hi: {{round(weather.daily.data[0].temperatureMax)}}°F</div>
-	<div>Lo: {{round(weather.daily.data[0].temperatureMin)}}°F</div>
-	<div>Dew Point: {{round(weather.currently.dewPoint)}}°</div>
-	<div>Humidity: {{percentage(weather.currently.humidity)}}%</div>
-	<div>Precipitation: {{percentage(weather.currently.precipProbability)}}%</div>
-	<div>Wind: {{round(weather.currently.windSpeed)}} mph {{direction(weather.currently.windBearing)}}</div>
-	<div>Visibility: {{weather.currently.visibility}} mi</div>
-	<div>Sunrise: {{convertDate(weather.daily.data[0].sunriseTime) | date: "shortTime"}}</div>
-	<div>Sunset: {{convertDate(weather.daily.data[0].sunsetTime) | date: "shortTime"}}</div>
-</div>
+	<div class="city">
+		<h1>{{city}}</h1>
+	</div>
 
-<div ng-show="toggleUnits">
-	<div>{{weather.currently.summary}}</div>
-	<div>Current: {{celsius(weather.currently.temperature)}}°C</div>
-	<div>Feels Like: {{round(weather.currently.apparentTemperature)}}°C</div>
-	<div>Hi: {{celsius(weather.daily.data[0].temperatureMax)}}°C</div>
-	<div>Lo: {{celsius(weather.daily.data[0].temperatureMin)}}°C</div>
-	<div>Dew Point: {{celsius(weather.currently.dewPoint)}}°</div>
-	<div>Humidity: {{percentage(weather.currently.humidity)}}%</div>
-	<div>Precipitation: {{percentage(weather.currently.precipProbability)}}%</div>
-	<div>Wind: {{kph(weather.currently.windSpeed)}} kph | {{direction(weather.currently.windBearing)}}</div>
-	<div>Visibility: {{kilo(weather.currently.visibility)}} km</div>
+	<div class="well" ng-show="!toggleUnits">
+		<div class="current">{{w.currently.summary}}</div>
+		<div class="current">Current: {{round(w.currently.temperature)}}°F</div>
+		<div class="current">Feels Like: {{round(w.currently.apparentTemperature)}}°F</div>
+		<div class="current">Hi: {{round(w.daily.data[0].temperatureMax)}}°F | Lo: {{round(w.daily.data[0].temperatureMin)}}°F</div>
+		<div class="current">Dew Point: {{round(w.currently.dewPoint)}}°</div>
+		<div class="current">Humidity: {{percentage(w.currently.humidity)}}%</div>
+		<div class="current">Precipitation: {{percentage(w.currently.precipProbability)}}%</div>
+		<div class="current">Wind: {{round(w.currently.windSpeed)}} mph | {{direction(w.currently.windBearing)}}</div>
+		<div class="current">Visibility: {{w.currently.visibility}} mi</div>
+		<div class="current">Sunrise: {{convertDate(w.daily.data[0].sunriseTime) | date: "shortTime"}}</div>
+		<div class="current">Sunset: {{convertDate(w.daily.data[0].sunsetTime) | date: "shortTime"}}</div>
+	</div>
+
+	<div class="well" ng-show="toggleUnits">
+		<div class="current">{{w.currently.summary}}</div>
+		<div class="current">Current: {{celsius(w.currently.temperature)}}°C</div>
+		<div class="current">Feels Like: {{celsius(w.currently.apparentTemperature)}}°C</div>
+		<div class="current">Hi: {{celsius(w.daily.data[0].temperatureMax)}}°C | Lo: {{celsius(w.daily.data[0].temperatureMin)}}°C</div>
+		<div class="current">Dew Point: {{celsius(w.currently.dewPoint)}}°</div>
+		<div class="current">Humidity: {{percentage(w.currently.humidity)}}%</div>
+		<div class="current">Precipitation: {{percentage(w.currently.precipProbability)}}%</div>
+		<div class="current">Wind: {{kph(w.currently.windSpeed)}} kph | {{direction(w.currently.windBearing)}}</div>
+		<div class="current">Visibility: {{kilo(w.currently.visibility)}} km</div>
+		<div class="current">Sunrise: {{convertDate(w.daily.data[0].sunriseTime) | date: "shortTime"}}</div>
+		<div class="current">Sunset: {{convertDate(w.daily.data[0].sunsetTime) | date: "shortTime"}}</div>
+	</div>
 </div>
 
 
